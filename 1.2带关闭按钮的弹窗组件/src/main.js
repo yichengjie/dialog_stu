@@ -6,7 +6,10 @@ import $ from 'jquery' ;
 class App {
     constructor(){
         $('.btn').click(()=>{
-            new Window().alert('welcome !') ;
+            new Window().alert('welcome !',()=>{
+                alert('you click the button !') ;
+                //console.info('you click the button ..') ;
+            }) ;
         });
     }
 }

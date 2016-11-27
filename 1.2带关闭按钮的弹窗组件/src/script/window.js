@@ -4,7 +4,7 @@ class Window{
         var boundingBox = $('<div class="window_boundingBox"></div>') ;
         boundingBox.appendTo('body') ;
         boundingBox.html(content) ;
-        var btn = $('<button type ="button">确定</button>')
+        var btn = $('<input type ="button" value ="确定" />')
         btn.appendTo(boundingBox) ;
         btn.click(()=>{
             handler && handler() ;
