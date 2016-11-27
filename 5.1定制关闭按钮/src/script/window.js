@@ -6,7 +6,9 @@ class Window{
             height:300,
             title:'系统消息',
 			content:"",
-			handler:null
+            hasCloseBtn:false,
+			handler4AlertBtn:null,
+			handler4CloseBtn:null
         } ;   
     }
     alert(cfg){
@@ -19,13 +21,13 @@ class Window{
                            <input type="button" value="确定"/>
                         </div>
                   </div>` ;
-        console.info('str : ' + str) ;
+        //console.info('str : ' + str) ;
         var boundingBox = $(str) ;
         boundingBox.appendTo('body') ;
         var btn = boundingBox.find('.window_footer input') ;
         btn.appendTo(boundingBox) ;
         btn.click(()=>{
-            CFG.handler && CFG.handler() ;
+            CFG.handler4AlertBtn && CFG.handler4AlertBtn() ;
             boundingBox.remove() ;
         }) ;
         boundingBox.css({
@@ -34,7 +36,14 @@ class Window{
             left:(CFG.x ||(window.innerWidth - CFG.width)/2 ) +"px",
             top:(CFG.y || (window.innerHeight - CFG.height )/2 ) + "px"
         }) ;
-
+        if(CFG.hasCloseBtn){
+            var closeBtn = $('<span class="window_closeBtn">&times;</span>') ;
+            closeBtn.appendTo(boundingBox) ;
+            closeBtn.click(()=>{
+                CFG.handler4CloseBtn && CFG.handler4CloseBtn();
+                boundingBox.remove() ;
+            }) ;
+        }
     }
     confirm(){
 
